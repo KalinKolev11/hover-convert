@@ -170,7 +170,7 @@ function convertUnit() {
     if (fromCurrency != null) {
         let num = parseFloat(originalAmount.replace(',', '.'));
         if(fromCurrency===targetCurrency)return;
-        let convertedCurrency = convertCurrency(num, fromCurrency, targetCurrency).then(res => showTooltip(res));
+        convertCurrency(num, fromCurrency, targetCurrency).then(res => showTooltip(res));
         return;
     }
 
@@ -178,7 +178,7 @@ function convertUnit() {
         let unit = conversions[key];
         if (unit.units.includes(originalUnit)) {
             let num = parseFloat(originalAmount.replace(',', '.'));
-            let resultUnit = unit.convert(originalAmount).value + " " + unit.targetUnit;
+            let resultUnit = unit.convert(num).value + " " + unit.targetUnit;
             showTooltip(resultUnit);
             break;
         }
