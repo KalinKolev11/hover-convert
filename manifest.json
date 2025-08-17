@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Hover Convert",
-  "description": "Extension that converts different units when text is selected in a page.",
-  "version": "1.0",
+  "description": "Easily convert units and currencies while browsing. Just highlight any value and instantly see the converted result in a small tooltip. Supports length, weight, temperature, and live currency exchange rates.",
+  "version": "1.0", 
   "permissions": [
     "activeTab",
     "storage"
