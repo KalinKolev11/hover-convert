@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unit & Currency Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-bottom: 10px;
+            color: #444;
+        }
+        .case {
+            background: #f4f4f4;
+            padding: 6px;
+            margin: 2px 0;
+            border-radius: 4px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<h1>Test Cases for Hover Converter Extension</h1>
+
+<div class="section">
+    <h2>Length</h2>
+    <div class="case">10 m</div>
+    <div class="case">5 meters</div>
+    <div class="case">12 km</div>
+    <div class="case">7 kilometers</div>
+    <div class="case">15 cm</div>
+    <div class="case">3 inches</div>
+    <div class="case">5 ft</div>
+    <div class="case">2 yards</div>
+</div>
+
+<div class="section">
+    <h2>Weight</h2>
+    <div class="case">10 kg</div>
+    <div class="case">2 kilograms</div>
+    <div class="case">5 lbs</div>
+    <div class="case">3 pounds</div>
+    <div class="case">100 g</div>
+    <div class="case">250 grams</div>
+    <div class="case">12 oz</div>
+</div>
+
+<div class="section">
+    <h2>Temperature</h2>
+    <div class="case">25 C</div>
+    <div class="case">30 °c</div>
+    <div class="case">77 F</div>
+    <div class="case">300 K</div>
+</div>
+
+<div class="section">
+    <h2>Currencies – Number First</h2>
+    <div class="case">10 usd</div>
+    <div class="case">99 eur</div>
+    <div class="case">45 gbp</div>
+    <div class="case">100 jpy</div>
+    <div class="case">250 inr</div>
+</div>
+
+<div class="section">
+    <h2>Currencies – Symbol Before Number</h2>
+    <div class="case">$100</div>
+    <div class="case">€ 5,99</div>
+    <div class="case">£45</div>
+    <div class="case">¥ 1000</div>
+    <div class="case">₹500</div>
+</div>
+
+<div class="section">
+    <h2>Currencies – Number Before Symbol</h2>
+    <div class="case">100$</div>
+    <div class="case">45€</div>
+    <div class="case">250£</div>
+    <div class="case">300¥</div>
+    <div class="case">999₹</div>
+</div>
+</body>
+</html>
