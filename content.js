@@ -134,7 +134,6 @@ chrome.storage.sync.get(['targetCurrency'], function(result) {
 
 document.addEventListener("mouseup", function (event) {
     selection = window.getSelection().toString().trim().toLowerCase();
-    console.log(targetCurrency);
     if (selection.length === 0) return;
     getMatches();
 }, false);
@@ -145,7 +144,7 @@ document.addEventListener("selectionchange", function (event) {
 }, false)
 
 function getMatches() {
-    const regEx = "(?<!\\S)(?:(-?\\d+(?:[.,]\\d+)?)(?:\\s*)([a-zA-Z]+|[\\$\\€\\£\\¥\\₹])|([a-zA-Z]+|[\\$\\€\\£\\¥\\₹])(?:\\s*)(-?\\d+(?:[.,]\\d+)?))(?!\\S)";
+    const regEx = "(?<!\\S)(?:(-?\\d+(?:[.,]\\d+)?)(?:\\s*)([a-zA-Z]+|[\\$\\€\\£\\¥\\₹\\₱\\₩\\\"])|([a-zA-Z]+|[\\$\\€\\£\\¥\\₹\\₱\\₩\\\"])(?:\\s*)(-?\\d+(?:[.,]\\d+)?))(?!\\S)";
     let match = selection.match(regEx);
     if (match===null) return;
 
@@ -179,7 +178,7 @@ function convertUnit() {
         let unit = conversions[key];
         if (unit.units.includes(originalUnit)) {
             let num = parseFloat(originalAmount.replace(',', '.'));
-            let resultUnit = unit.convert(originalAmount).value + " " + unit.targetUnit + ".";
+            let resultUnit = unit.convert(originalAmount).value + " " + unit.targetUnit;
             showTooltip(resultUnit);
             break;
         }
