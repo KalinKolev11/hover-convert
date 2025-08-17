@@ -144,7 +144,7 @@ document.addEventListener("selectionchange", function (event) {
 }, false)
 
 function getMatches() {
-    const regEx = "(?<!\\S)(?:(-?\\d+(?:[.,]\\d+)?)(?:\\s*)([a-zA-Z]+|[\\$\\€\\£\\¥\\₹\\₱\\₩\\\"])|([a-zA-Z]+|[\\$\\€\\£\\¥\\₹\\₱\\₩\\\"])(?:\\s*)(-?\\d+(?:[.,]\\d+)?))(?!\\S)";
+    const regEx = "(?<!\\S)(?:(-?\\d+(?:[.,]\\d+)?)(?:\\s*)([°a-zA-Z]+|[\\$\\€\\£\\¥\\₹\\₱\\₩\\\"])|([°a-zA-Z]+|[\\$\\€\\£\\¥\\₹\\₱\\₩\\\"])(?:\\s*)(-?\\d+(?:[.,]\\d+)?))(?!\\S)";
     let match = selection.match(regEx);
     if (match===null) return;
 
