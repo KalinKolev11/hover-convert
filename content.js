@@ -1,7 +1,7 @@
 let selection = null;
 let match = null;//0 - full match, 1 - number, 2 - unit
-let amount = null;
-let unit = null
+let originalAmount = null;
+let originalUnit = null
 
 const conversions = {
     // Length units
@@ -99,9 +99,9 @@ const currencyConversions = {
     czk: ["czk", "czech koruna", "koruna", "kc", "kč"],
     dkk: ["dkk", "danish krone", "krone", "kroner", "kr"],
     eur: ["eur", "€", "euro", "euros"],
-    gbp: ["gbp", "£", "pound", "pounds", "quid"],
+    gbp: ["gbp", "£", "quid"],
     hkd: ["hkd", "hong kong dollar", "hong kong dollars", "hk$"],
-    huf: ["huf", "hungarian forint", "forint", "ft"],
+    huf: ["huf", "hungarian forint", "forint"],
     idr: ["idr", "indonesian rupiah", "rupiah", "rp"],
     ils: ["ils", "israeli shekel", "shekel", "shekels", "₪", "nis"],
     inr: ["inr", "₹", "rupee", "rupees"],
@@ -141,30 +141,41 @@ function getMatches() {
     //const regEx = "(?<!\\S)(-?\\d+(?:[.,]\\d+)?)(?:\\s*)([a-zA-Z]+|[\\$\\€\\£\\¥\\₹])(?!\\S)";
     //match = selection.match(regEx);
     //if (match === null) return;
+    const regEx = "(?<!\\S)(?:(-?\\d+(?:[.,]\\d+)?)(?:\\s*)([a-zA-Z]+|[\\$\\€\\£\\¥\\₹])|([a-zA-Z]+|[\\$\\€\\£\\¥\\₹])(?:\\s*)(-?\\d+(?:[.,]\\d+)?))(?!\\S)";
+    match = selection.match(regEx);
+    if (match===null) return;
 
+    if (match[1] && match[2]) {
+        originalAmount = match[1];
+        originalUnit = match[2];
+    } else if (match[3] && match[4]) {
+        originalAmount = match[4];
+        originalUnit = match[3];
+    }
     convertUnit();
 }
 
 function convertUnit() {
     let fromCurrency = null;
     for (let key in currencyConversions) {
-        if (currencyConversions[key].includes(match[2])) {
+        if (currencyConversions[key].includes(originalUnit)) {
             fromCurrency = key;
             break;
         }
     }
 
     if (fromCurrency != null) {
-        let num = parseFloat(match[1].replace(',', '.'));
+        let num = parseFloat(originalAmount.replace(',', '.'));
+        if(fromCurrency===targetCurrency)return;
         let convertedCurrency = convertCurrency(num, fromCurrency, targetCurrency).then(res => showTooltip(res));
         return;
     }
 
     for (let key in conversions) {
         let unit = conversions[key];
-        if (unit.units.includes(match[2])) {
-            let num = parseFloat(match[1].replace(',', '.'));
-            let resultUnit = unit.convert(match[1]).value + " " + unit.targetUnit + ".";
+        if (unit.units.includes(originalUnit)) {
+            let num = parseFloat(originalAmount.replace(',', '.'));
+            let resultUnit = unit.convert(originalAmount).value + " " + unit.targetUnit + ".";
             showTooltip(resultUnit);
             break;
         }
