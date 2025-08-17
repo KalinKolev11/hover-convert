@@ -4,7 +4,8 @@
   "description": "Extension that converts different units when text is selected in a page.",
   "version": "1.0",
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
   "icons": {
     "16": "Icons/Icon_16.png",
