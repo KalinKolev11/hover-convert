@@ -3,7 +3,6 @@
   "name": "Hover Convert",
   "description": "Extension that converts different units when text is selected in a page.",
   "version": "1.0",
-
   "permissions": [
     "activeTab"
   ],
@@ -15,9 +14,14 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_end"
     }
-  ]
+  ],
+  "options_page": "options.html"
 }
