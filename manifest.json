@@ -4,7 +4,6 @@
   "description": "Convert units, currencies, and temperatures on any page. Highlight text to see instant results.",
   "version": "1.0",
   "permissions": [
-    "activeTab",
     "storage"
   ],
   "icons": {
